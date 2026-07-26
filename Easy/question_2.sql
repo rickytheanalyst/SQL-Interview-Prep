@@ -1,3 +1,15 @@
+/*
+==================================================================================================
+NOTE: 
+    Solution for the question is at the end of the file. Feel 
+    free to copy the DDL and Insert Queries.
+==================================================================================================
+
+Q: Find all posts which were reacted to with a heart. For such posts output all 
+   columns from facebook_posts table.
+
+*/
+
 /* ===== facebook_posts ===== */
 
 CREATE TABLE facebook_posts (
@@ -55,7 +67,7 @@ VALUES(2, 1, 'like', 1, 0),
 SELECT * FROM facebook_posts
 SELECT * FROM facebook_reactions
 
--- Find all posts which were reacted to with a heart. For such posts output all columns from facebook_posts table.
+-- ===== Answer =====
 
 SELECT 
     fp.*
@@ -63,5 +75,11 @@ FROM facebook_posts fp
 INNER JOIN facebook_reactions fr
 ON fp.post_id = fr.post_id 
 WHERE reaction = 'heart'
-GROUP BY fp.post_id, fp.poster, fp.post_txt, fp.post_keywords, fp.post_date
+GROUP BY fp.post_id, 
+	     fp.poster, 
+	     fp.post_txt, 
+	     fp.post_keywords, 
+	     fp.post_date
+
+
 
