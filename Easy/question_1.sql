@@ -1,3 +1,15 @@
+/*
+==================================================================================================
+NOTE: 
+    Solution for the question is at the end of the file. Feel 
+    free to copy the DDL and Insert Queries.
+==================================================================================================
+Q: Management wants to analyze only employees with official job titles. Find the title(s) 
+   of the worker(s) with the highest salary among workers who have a corresponding record in 
+   the  title  table. If multiple employees have the same highest salary, include all their job titles.
+
+*/
+
 /* ===== WORKER TABLE ===== */
 
 CREATE TABLE Worker(
@@ -58,13 +70,7 @@ VALUES
 SELECT * FROM WORKER
 SELECT * FROM TITLE
 
-/*
-Q: Management wants to analyze only employees with official job titles. Find the title(s) 
-   of the worker(s) with the highest salary among workers who have a corresponding record in 
-   the  title  table. If multiple employees have the same highest salary, include all their job titles.
-*/
-
-
+-- ===== Answer =====
 SELECT 
 	t.worker_title AS "best_paid_title"
 FROM worker w
@@ -75,4 +81,6 @@ WHERE w.salary = (SELECT
                   FROM worker w
                   INNER JOIN title t
                   ON w.worker_id = t.worker_ref_id)
+
+
 
